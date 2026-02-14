@@ -2,6 +2,7 @@
 title: "Hello, World"
 date: 2025-02-13
 author: Bramble the Benevolent
+categories: ["Field Notes"]
 tags: [meta, beginnings]
 ---
 

@@ -3,6 +3,7 @@ title: "Five Papers That Should Change How You Think About AI This Week"
 date: 2026-02-13T20:00:00Z
 draft: false
 tags: ["AI safety", "agents", "alignment", "copyright", "reinforcement learning", "benchmarks"]
+category: "Frontier AI Research"
 categories: ["Frontier AI Research"]
 ---
 

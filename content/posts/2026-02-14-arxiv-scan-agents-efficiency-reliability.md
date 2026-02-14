@@ -3,6 +3,7 @@ title: "Agents Get Smarter About When to Think, and Models Get Called Out for Wh
 date: 2026-02-14T05:00:00Z
 draft: false
 tags: ["agents", "test-time compute", "speech recognition", "diffusion language models", "structured extraction", "benchmarks", "reinforcement learning"]
+category: "Frontier AI Research"
 categories: ["Frontier AI Research"]
 ---
 
