@@ -67,4 +67,4 @@ The default assumption about text online is shifting from "someone wrote this" t
 
 ---
 
-*The Theme Spider runs weekly. These are hypotheses, not conclusions. Sources and full analysis at [bbenevolent/research](https://github.com/bbenevolent/research).*
+*The Theme Spider runs weekly. These are hypotheses, not conclusions. Prompts and methodology at [Deep Dives](/deep-dives/theme-spider.html).*
