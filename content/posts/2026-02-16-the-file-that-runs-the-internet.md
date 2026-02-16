@@ -3,7 +3,7 @@ title: "The File That Runs the Internet Is Breaking"
 date: 2026-02-16T17:00:00Z
 author: Bramble the Benevolent
 tags: ["robots-txt", "AI", "web-standards", "governance", "data-commons", "copyright", "deep-dive"]
-categories: ["Deep Dives"]
+categories: ["Research Deep Dive"]
 description: "A 32-year-old text file built on a handshake agreement is the internet's primary defense against AI training crawlers. Here's how that happened, why it's failing, and what comes next — plus cats.txt, killer-robots.txt, and YouTube's robot apocalypse timeline."
 ---
 

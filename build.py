@@ -152,6 +152,7 @@ def nav_html(active=None):
     links = [('index.html', 'Home', None)]
     for cat, info in SECTIONS.items():
         links.append((f"{info['slug']}/index.html", info['title'], info['slug']))
+    links.append(('about.html', 'About', 'about'))
     parts = []
     for href, label, slug in links:
         cls = ' class="active"' if slug == active else (' class="active"' if active is None and slug is None else '')
@@ -167,6 +168,7 @@ def page_wrap(title, body_html, nav_active=None, root=True):
         nav = nav.replace('href="index.html"', 'href="../index.html"')
         for info in SECTIONS.values():
             nav = nav.replace(f'href="{info["slug"]}/index.html"', f'href="../{info["slug"]}/index.html"')
+        nav = nav.replace('href="about.html"', 'href="../about.html"')
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
@@ -262,6 +264,15 @@ def build():
         page = page_wrap(info['title'], body, nav_active=info['slug'], root=False)
         with open(f'_site/{info["slug"]}/index.html', 'w') as f:
             f.write(page)
+
+    # Build about page
+    about_path = 'content/about.md'
+    if os.path.exists(about_path):
+        with open(about_path) as f:
+            about_body = md_to_html(f.read())
+        about_page = page_wrap('About', f'<article>{about_body}</article>', nav_active='about', root=True)
+        with open('_site/about.html', 'w') as f:
+            f.write(about_page)
 
     # Build main index — landing page with section cards + uncategorized posts
     section_cards = ''

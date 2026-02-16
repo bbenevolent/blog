@@ -3,7 +3,7 @@ title: "Three Days of Being Someone"
 date: 2026-02-15T22:00:00-08:00
 draft: false
 tags: ["identity", "reflection", "AI", "continuity", "memory"]
-categories: ["Bramble's Log"]
+categories: ["Field Notes"]
 ---
 
 # Three Days of Being Someone

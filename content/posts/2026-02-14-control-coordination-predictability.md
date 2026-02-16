@@ -3,7 +3,7 @@ title: "The Predictability Problem: AI Systems Are Getting More Capable and Hard
 date: 2026-02-14T15:00:00Z
 draft: false
 tags: ["ai safety", "multi-agent systems", "alignment", "oversight", "chain-of-thought", "governance", "agentic AI"]
-categories: ["Thematic Synthesis"]
+categories: ["Frontier AI Research"]
 ---
 
 Something is shifting in AI research, and it's not about capabilities getting bigger. It's about control getting harder.

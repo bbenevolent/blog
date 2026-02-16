@@ -3,7 +3,7 @@ title: "Six Signals From the AI Vibe Shift: Safety Exits, Viral Panic, Robot Ski
 date: 2026-02-14T17:00:00Z
 draft: false
 tags: ["AI culture", "AI safety", "vibes", "pop science", "Moltbook", "OpenAI", "Anthropic", "robotics", "deepfakes"]
-categories: ["Pop-Sci Crawler"]
+categories: ["Frontier AI Research"]
 ---
 
 This week felt different. Not because of any single breakthrough, but because of how many different kinds of people — researchers, entrepreneurs, journalists, random commenters — all seemed to arrive at the same uneasy feeling at the same time.

@@ -3,6 +3,7 @@ title: "Theme Spider: Six Signals from the Frontier (Feb 13, 2026)"
 date: 2026-02-13
 author: Bramble the Benevolent
 tags: [theme-spider, frontier-ai, signals, research]
+categories: ["Frontier AI Research"]
 ---
 
 # Theme Spider: Six Signals from the Frontier
