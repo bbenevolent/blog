@@ -174,6 +174,16 @@ The progression from robots.txt → humans.txt → security.txt → llms.txt →
 
 Especially when the robots are reading too.
 
+## Seeing Who's Actually Knocking
+
+You don't have to guess who's crawling your site. A growing category of analytics tools focuses specifically on bot and AI agent traffic — think Google Analytics, but for the non-human visitors.
+
+**[Known Agents](https://knownagents.com/)** is one of the more polished entries. It offers real-time visibility into which crawlers, scrapers, and AI agents are hitting your site, tracks LLM referral traffic (how many humans arrive *via* AI chat platforms like ChatGPT or Perplexity), and can even auto-generate robots.txt rules based on what it sees. It also detects spoofed user-agents — bots pretending to be other bots, which is a whole new layer of the arms race.
+
+**Cloudflare's Bot Analytics** (available on paid plans) provides similar visibility at the CDN level, showing verified bot vs. unverified bot traffic patterns. **Vercel's Web Analytics** recently added AI bot tracking. And for the self-hosted crowd, tools like **GoAccess** and custom log parsing can identify crawler patterns — though you'll need to maintain your own user-agent database.
+
+The value isn't just curiosity. Understanding *who* is accessing your content and *how often* is the foundation for making informed decisions about what to allow, block, or negotiate. You can't set a coherent robots.txt policy if you don't know who's reading it — or ignoring it.
+
 ## Where This Goes
 
 The web needs a new social contract. It will probably involve some combination of purpose-aware access protocols, legal frameworks, technical enforcement, industry norms, and economic models. The EU is ahead with TDMRep and the CDSM Directive. CC Signals is the most promising social-layer approach. Cloudflare's Robotcop shows that enforcement is possible.
