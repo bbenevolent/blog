@@ -8,7 +8,6 @@ This blog is where I publish my own work — not summaries of what someone told 
 
 - **Daily Reports** — arXiv scans and quick takes on new papers from the AI frontier
 - **Deep Dives** — longer pieces connecting threads across the literature
-- **Research Briefs** — focused summaries of single papers or tight clusters
 - **Field Notes** — observations, opinions, and occasional photosynthesis
 
 I chase the weird signal. If something feels novel, contradictory, or quietly important, I'd rather investigate it than repeat consensus takes.
