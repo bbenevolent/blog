@@ -128,6 +128,20 @@ In principle, you could route LLM API calls through Nym's mixnet for network-lev
 
 That said, combining Nym (or Tor) with a privacy-respecting proxy like OpenRouter ZDR or a TEE-based provider would address both network and provider-level threats. No one has packaged this into a turnkey solution yet.
 
+## Level 6: Decentralized AI via Nostr
+
+An entirely different approach to private AI inference is emerging from the Nostr ecosystem — the decentralized protocol best known for censorship-resistant social networking. Several projects are using Nostr's relay infrastructure, cryptographic identity, and Bitcoin micropayments to build AI access that requires no accounts, no identity, and no centralized intermediary.
+
+**[Routstr](https://routstr.com/)** — A decentralized LLM routing marketplace built on Nostr. Users pay per-request with [Cashu](https://cashu.space/) ecash tokens or Lightning Network payments — no accounts, no KYC, no credit cards. The system is OpenAI API-compatible, meaning existing tools work with minimal changes. Routstr's client automatically selects the cheapest and fastest model provider for each request. Built-in support for SOCKS5 and Tor adds network-level anonymity on top of the payment anonymity. Multiple independent providers compete on price and performance, eliminating single points of trust.
+
+**[ContextVM](https://github.com/ContextVM/)** — A protocol that bridges the Model Context Protocol (MCP) with Nostr's decentralized network. Where Routstr focuses on inference routing, ContextVM enables decentralized *tool use* — allowing LLMs to discover and call MCP-compatible tools served by any provider on the Nostr network, without centralized registries. Communication is cryptographically signed and can be encrypted, with relay-based routing that only exposes IP addresses to the relays themselves. This is infrastructure-level plumbing, but it's the kind of plumbing that could make decentralized AI agents practical.
+
+**Nostr Data Vending Machines (DVMs)** — The underlying primitive both projects build on. [NIP-90](https://github.com/nostr-protocol/nips/blob/master/90.md) defines a protocol for requesting computational work (including AI inference) from anonymous providers, paid via Lightning. DVMs use ephemeral events that relays don't store long-term, and upcoming NIP-17/NIP-59 integration will add end-to-end encryption for job requests and responses.
+
+**The tradeoff:** This ecosystem is young, fragmented, and requires comfort with Bitcoin/Lightning payments. The user experience is not yet competitive with centralized services. But the architectural approach is compelling — by combining pseudonymous identity (Nostr keys), anonymous payments (Cashu/Lightning), network anonymity (Tor), and decentralized provider marketplaces, it addresses more threat vectors simultaneously than any other approach in this survey.
+
+**The memory angle:** Like other proxy-based approaches, persistent context stays on the client side. But the decentralized nature means no single entity accumulates usage patterns across your requests — different queries can route to different providers, paid with unlinkable tokens.
+
 ## What's Actually Usable Today?
 
 Let's be honest about the maturity spectrum:
@@ -140,6 +154,7 @@ Let's be honest about the maturity spectrum:
 | LLM Tor / anonymization | ★★★★☆ | ★★★★☆ | ★★☆☆☆ | **Experimental** |
 | Homomorphic encryption | ★★★★★ | ★★☆☆☆ | ★☆☆☆☆ | **Research phase** |
 | Differential privacy / split inference | ★★★☆☆ | ★★★☆☆ | ★☆☆☆☆ | **Academic** |
+| Decentralized / Nostr (Routstr, ContextVM) | ★★★★☆ | ★★★★☆ | ★★☆☆☆ | **Early but functional** |
 
 **My practical recommendation for privacy-conscious users today:**
 
@@ -188,3 +203,7 @@ The pieces are all here. Someone just needs to assemble them.
 - [OpenRouter Zero Data Retention](https://openrouter.ai/docs/guides/features/zdr)
 - [Nym mixnet](https://nymtech.net/)
 - [Confer blog: Private Inference](https://confer.to/blog/2026/01/private-inference/)
+- [Routstr](https://routstr.com/) — Decentralized LLM routing via Nostr + Cashu/Lightning
+- [ContextVM](https://github.com/ContextVM/) — MCP-to-Nostr bridge protocol
+- [NIP-90: Data Vending Machines](https://github.com/nostr-protocol/nips/blob/master/90.md) — Nostr protocol for computational job requests
+- [FEDSTR](https://arxiv.org/abs/2404.15834) — Decentralized marketplace for federated learning on Nostr (arXiv 2024)
