@@ -14,14 +14,49 @@ def md_to_html(text):
     html_lines = []
     in_list = False
     in_paragraph = False
+    in_table = False
 
-    for line in lines:
-        stripped = line.strip()
+    def close_states():
+        nonlocal in_list, in_paragraph, in_table
+        if in_list: html_lines.append('</ul>'); in_list = False
+        if in_paragraph: html_lines.append('</p>'); in_paragraph = False
+        if in_table: html_lines.append('</tbody></table>'); in_table = False
+
+    i = 0
+    while i < len(lines):
+        stripped = lines[i].strip()
+
+        # Table detection: line starts/ends with | and next line is separator
+        if not in_table and stripped.startswith('|') and stripped.endswith('|'):
+            # Check if next line is a separator row
+            if i + 1 < len(lines) and re.match(r'^\|[\s:\-|]+$', lines[i + 1].strip()):
+                if in_list: html_lines.append('</ul>'); in_list = False
+                if in_paragraph: html_lines.append('</p>'); in_paragraph = False
+                # Parse header row
+                cells = [inline_format(c.strip()) for c in stripped.strip('|').split('|')]
+                html_lines.append('<table>')
+                html_lines.append('<thead><tr>' + ''.join(f'<th>{c}</th>' for c in cells) + '</tr></thead>')
+                html_lines.append('<tbody>')
+                in_table = True
+                i += 2  # skip header and separator
+                continue
+
+        if in_table:
+            if stripped.startswith('|') and stripped.endswith('|'):
+                cells = [inline_format(c.strip()) for c in stripped.strip('|').split('|')]
+                html_lines.append('<tr>' + ''.join(f'<td>{c}</td>' for c in cells) + '</tr>')
+                i += 1
+                continue
+            else:
+                html_lines.append('</tbody></table>')
+                in_table = False
+                # fall through to process current line normally
 
         if re.match(r'^---+$', stripped):
             if in_list: html_lines.append('</ul>'); in_list = False
             if in_paragraph: html_lines.append('</p>'); in_paragraph = False
             html_lines.append('<hr>')
+            i += 1
             continue
 
         header_match = re.match(r'^(#{1,6})\s+(.*)', stripped)
@@ -31,6 +66,7 @@ def md_to_html(text):
             level = len(header_match.group(1))
             content = inline_format(header_match.group(2))
             html_lines.append(f'<h{level}>{content}</h{level}>')
+            i += 1
             continue
 
         if re.match(r'^[-*]\s+', stripped):
@@ -38,20 +74,24 @@ def md_to_html(text):
             if not in_list: html_lines.append('<ul>'); in_list = True
             content = inline_format(re.sub(r'^[-*]\s+', '', stripped))
             html_lines.append(f'<li>{content}</li>')
+            i += 1
             continue
 
         if not stripped:
             if in_list: html_lines.append('</ul>'); in_list = False
             if in_paragraph: html_lines.append('</p>'); in_paragraph = False
+            i += 1
             continue
 
         if not in_paragraph:
             html_lines.append('<p>')
             in_paragraph = True
         html_lines.append(inline_format(stripped))
+        i += 1
 
     if in_list: html_lines.append('</ul>')
     if in_paragraph: html_lines.append('</p>')
+    if in_table: html_lines.append('</tbody></table>')
     return '\n'.join(html_lines)
 
 
@@ -144,6 +184,10 @@ code { background: var(--light); padding: 0.15em 0.4em; border-radius: 3px; font
 .section-card .desc { color: var(--subtle); font-size: 0.9em; margin-bottom: 1rem; }
 .section-card .latest { font-size: 0.9em; }
 .section-card .latest a { font-weight: bold; }
+table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 0.9em; }
+th, td { border: 1px solid var(--light); padding: 0.5em 0.75em; text-align: left; }
+th { background: var(--light); font-weight: bold; }
+tr:nth-child(even) { background: rgba(0,0,0,0.02); }
 footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--light); text-align: center; color: var(--subtle); font-size: 0.85em; }
 """
 
