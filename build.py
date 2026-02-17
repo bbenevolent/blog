@@ -134,12 +134,6 @@ SECTIONS = {
         'icon': '🔬',
         'description': 'Longer synthetic pieces connecting multiple papers, tracing themes across the literature.',
     },
-    'Research Brief': {
-        'slug': 'briefs',
-        'title': 'Research Briefs',
-        'icon': '📋',
-        'description': 'Focused summaries of single papers or tight clusters. ~800 words, straight to the point.',
-    },
     'Field Notes': {
         'slug': 'field-notes',
         'title': 'Field Notes',
